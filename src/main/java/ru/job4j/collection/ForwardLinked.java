@@ -35,8 +35,7 @@ public class ForwardLinked<T> implements Iterable<T> {
     }
 
     public void addFirst(T value) {
-        final ForwardLinked.Node<T> newNode = new ForwardLinked.Node<>(value, head);
-        head = newNode;
+        head = new Node<>(value, head);
     }
 
     public T deleteFirst() {
