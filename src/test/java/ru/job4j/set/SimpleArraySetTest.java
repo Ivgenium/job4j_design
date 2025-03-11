@@ -1,7 +1,13 @@
 package ru.job4j.set;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SimpleArraySetTest {
 
@@ -48,5 +54,24 @@ class SimpleArraySetTest {
         assertThat(set.contains("B")).isTrue();
         assertThat(set.contains("D")).isFalse();
         assertThat(set.add("A")).isFalse();
+    }
+
+    @Test
+    void whenGetIteratorFromEmptySetThenNextThrowException() {
+        SimpleSet<String> set = new SimpleArraySet<>();
+        assertThatThrownBy(set.iterator()::next)
+                .isInstanceOf(NoSuchElementException.class);
+    }
+
+    @Test
+    void whenAddAfterGetIteratorHasNextThenMustBeException() {
+        SimpleSet<Integer> set = new SimpleArraySet<>();
+        set.add(1);
+        set.add(2);
+        Iterator<Integer> iterator = set.iterator();
+        assertThat(iterator.hasNext()).isTrue();
+        set.add(3);
+        assertThatThrownBy(iterator::hasNext)
+                .isInstanceOf(ConcurrentModificationException.class);
     }
 }
