@@ -16,15 +16,14 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public boolean put(K key, V value) {
         boolean rsl = false;
-        int index = indexFor(hash(Objects.hashCode(key)));
+        if (count == (int) (capacity * LOAD_FACTOR)) {
+            expand();
+        }
+        int index = getIndexByKey(key);
         if (table[index] == null) {
+            table[index] = new MapEntry<>(key, value);
             count++;
             modCount++;
-            if (count == (int) (capacity * LOAD_FACTOR)) {
-                expand();
-                index = indexFor(hash(Objects.hashCode(key)));
-            }
-            table[index] = new MapEntry<>(key, value);
             rsl = true;
         }
         return rsl;
@@ -33,7 +32,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public V get(K key) {
         V rsl = null;
-        int index = indexFor(hash(Objects.hashCode(key)));
+        int index = getIndexByKey(key);
         MapEntry<K, V> p = table[index];
         if (p != null) {
             if (checkTheEqualityOfKeys(p.key, key)) {
@@ -46,7 +45,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public boolean remove(K key) {
         boolean rsl = false;
-        int index = indexFor(hash(Objects.hashCode(key)));
+        int index = getIndexByKey(key);
         MapEntry<K, V> p = table[index];
         if (p != null) {
             if (checkTheEqualityOfKeys(p.key, key)) {
@@ -97,6 +96,10 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     private int indexFor(int hash) {
         return hash & (capacity - 1);
+    }
+
+    private int getIndexByKey(K key) {
+        return indexFor(hash(Objects.hashCode(key)));
     }
 
     private boolean checkTheEqualityOfKeys(K key1, K key2) {
