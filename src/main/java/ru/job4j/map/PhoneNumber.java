@@ -29,7 +29,7 @@ public class PhoneNumber {
     public int hashCode() {
         int result = Short.hashCode(areaCode);
         result = 31 * result + Short.hashCode(prefix);
-        result = (result << 5) - result + Short.hashCode(lineNum); // 31 * result
+        result = (result << 5) - result + Short.hashCode(lineNum);
         return result;
     }
 
