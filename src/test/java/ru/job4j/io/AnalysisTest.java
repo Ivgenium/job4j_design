@@ -25,11 +25,11 @@ class AnalysisTest {
         File target = tempDir.resolve("target.txt").toFile();
         Analysis analysis = new Analysis();
         analysis.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
-        StringJoiner result = new StringJoiner("","", System.lineSeparator());
+        StringJoiner result = new StringJoiner("", "", System.lineSeparator());
         try (BufferedReader input = new BufferedReader(new FileReader(target))) {
             input.lines().forEach(result::add);
         }
-        StringJoiner expected = new StringJoiner("", "", System.lineSeparator());
+        StringJoiner expected = new StringJoiner("",  "", System.lineSeparator());
         expected.add("10:57:01;10:59:01;");
         expected.add("11:01:02;11:02:02;");
         assertThat(expected.toString()).isEqualTo(result.toString());
@@ -49,7 +49,7 @@ class AnalysisTest {
         File target = tempDir.resolve("target.txt").toFile();
         Analysis analysis = new Analysis();
         analysis.unavailable(source.getAbsolutePath(), target.getAbsolutePath());
-        StringJoiner result = new StringJoiner("","", System.lineSeparator());
+        StringJoiner result = new StringJoiner("", "", System.lineSeparator());
         try (BufferedReader input = new BufferedReader(new FileReader(target))) {
             input.lines().forEach(result::add);
         }
