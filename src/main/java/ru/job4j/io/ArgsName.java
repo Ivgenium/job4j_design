@@ -8,7 +8,6 @@ public class ArgsName {
     private final Map<String, String> values = new HashMap<>();
 
     public String get(String key) {
-        /* TODO add the necessary checks. */
         if (!values.containsKey(key)) {
             throw new IllegalArgumentException(String.format("This key: '%s' is missing", key));
         }
