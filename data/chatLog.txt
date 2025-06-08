@@ -1,0 +1,17 @@
+User phrase: Привет!
+Bot phrase: Я готова отвечать на вопросы о себе.
+User phrase: Как дела?
+Bot phrase: Нет, не нравится.
+User phrase: стоп
+User phrase: А как там погодка?
+User phrase: Солнечный удар не боишься получить?
+User phrase: А то погода всегда во всём виновата.
+User phrase: продолжить
+Bot phrase: Привет, давай поболтаем?
+User phrase: Тогда продолжим.
+Bot phrase: Отлично, мы узнали друг про друга кое-что.
+User phrase: Как настроение?
+Bot phrase: Я готова отвечать на вопросы о себе.
+User phrase: Как тебя зовут?
+Bot phrase: Я чат-бот.
+User phrase: закончить
