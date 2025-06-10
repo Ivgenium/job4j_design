@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,35 +15,34 @@ public class CSVReader {
         String delimiter = argsName.get("delimiter");
         FileInputStream file = new FileInputStream(argsName.get("path"));
         String[] columnNamesFilter = argsName.get("filter").split(",");
-        List<String> temp = new ArrayList<>();
-        var scanner = new Scanner(file);
-        List<Integer> columnIndexes = new ArrayList<>();
-        while (scanner.hasNext()) {
-            temp.add(scanner.nextLine());
-        }
-        if (!temp.isEmpty()) {
-            String[] columnNames = temp.get(0).split(delimiter);
+        try (var scanner = new Scanner(file);
+             var result = "stdout".equals(argsName.get("out"))
+                     ? new PrintStream(System.out) : new PrintStream(argsName.get("out"))) {
+            List<Integer> columnIndexes = new ArrayList<>();
+            String[] columnNames = scanner.nextLine().split(delimiter);
             for (String columnNameFilter : columnNamesFilter) {
                 for (int i = 0; i < columnNames.length; i++) {
                     if (columnNameFilter.equals(columnNames[i])) {
                         columnIndexes.add(i);
+                        break;
                     }
                 }
             }
-        }
-        PrintStream result;
-        if (argsName.get("out").equals("stdout")) {
-            result = new PrintStream(System.out);
-        } else {
-            result = new PrintStream(argsName.get("out"));
-        }
-        for (String s : temp) {
-            String[] line = s.split(delimiter);
-            var filterLine = new StringJoiner(delimiter);
-            for (Integer index : columnIndexes) {
-                filterLine.add(line[index]);
+            var firstLine = new StringJoiner(delimiter);
+            for (String s : columnNamesFilter) {
+                firstLine.add(s);
             }
-            result.println(filterLine);
+            result.println(firstLine);
+            while (scanner.hasNext()) {
+                String[] line = scanner.nextLine().split(delimiter);
+                var filterLine = new StringJoiner(delimiter);
+                for (Integer index : columnIndexes) {
+                    filterLine.add(line[index]);
+                }
+                result.println(filterLine);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
