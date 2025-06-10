@@ -25,6 +25,7 @@ public class ConsoleChat {
         List<String> phrases = readPhrases();
         List<String> log = new ArrayList<>();
         boolean status = true;
+        Random randomizer = new Random();
         do {
             userPhrase = scanner.nextLine();
             log.add("User phrase: " + userPhrase);
@@ -35,7 +36,6 @@ public class ConsoleChat {
                 status = true;
             }
             if (status) {
-                Random randomizer = new Random();
                 String randomPhrase = phrases.get(randomizer.nextInt(phrases.size()));
                 System.out.println(randomPhrase);
                 log.add("Bot phrase: " + randomPhrase);

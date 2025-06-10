@@ -15,3 +15,20 @@ Bot phrase: Я готова отвечать на вопросы о себе.
 User phrase: Как тебя зовут?
 Bot phrase: Я чат-бот.
 User phrase: закончить
+User phrase: Привет!
+Bot phrase: Нет, не нравится.
+User phrase: Как дела?
+Bot phrase: Что будем обсуждать?
+User phrase: стоп
+User phrase: А как там погодка?
+User phrase: Солнечный удар не боишься получить?
+User phrase: А то погода всегда во всём виновата.
+User phrase: продолжить
+Bot phrase: Я чат-бот.
+User phrase: Тогда продолжим.
+Bot phrase: Нет, не нравится.
+User phrase: Как настроение?
+Bot phrase: Нет, не нравится.
+User phrase: Как тебя зовут?
+Bot phrase: Нет, не нравится.
+User phrase: закончить
