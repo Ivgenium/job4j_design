@@ -11,11 +11,11 @@ import java.util.Scanner;
 import java.util.StringJoiner;
 
 public class CSVReader {
-    public static void handle(ArgsName argsName) throws Exception {
+    public static void handle(ArgsName argsName) {
         String delimiter = argsName.get("delimiter");
-        FileInputStream file = new FileInputStream(argsName.get("path"));
         String[] columnNamesFilter = argsName.get("filter").split(",");
-        try (var scanner = new Scanner(file);
+        try (var file = new FileInputStream(argsName.get("path"));
+             var scanner = new Scanner(file);
              var result = "stdout".equals(argsName.get("out"))
                      ? new PrintStream(System.out) : new PrintStream(argsName.get("out"))) {
             List<Integer> columnIndexes = new ArrayList<>();
@@ -63,7 +63,7 @@ public class CSVReader {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         ArgsName argsName = ArgsName.of(args);
         checkArgs(argsName);
         handle(argsName);
