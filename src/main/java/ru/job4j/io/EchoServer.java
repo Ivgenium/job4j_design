@@ -14,7 +14,7 @@ public class EchoServer {
                              new InputStreamReader(socket.getInputStream()))) {
                     output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     String str = input.readLine();
-                    if (str.contains("Bye")) {
+                    if (str.contains("msg=Bye")) {
                         output.write("You have shut down the server.\r\n\r\n".getBytes());
                         server.isClosed();
                         break;
