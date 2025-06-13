@@ -10,10 +10,16 @@ public class UsageLog4j {
 
     public static void main(String[] args) {
         BasicConfigurator.configure();
-        LOG.trace("trace message");
-        LOG.debug("debug message");
-        LOG.info("info message");
-        LOG.warn("warn message");
-        LOG.error("error message");
+        byte age = 30;
+        short height = 180;
+        int numberOfBricks = 1_000_000;
+        float a = 3.5F;
+        double threshold = 0.0001D;
+        long distanceToSpaceObjects = 149_600_000L;
+        char gender = 'm';
+        boolean workPermit = false;
+        LOG.debug("Age : {}, height : {}, number of bricks : {}, a : {}, threshold : {}"
+                + ", distance to space objects : {}, gender : {}, work permit : {}",
+                age, height, numberOfBricks, a, threshold, distanceToSpaceObjects, gender, workPermit);
     }
 }
