@@ -21,5 +21,6 @@ public class UsageLog4j {
         LOG.debug("Age : {}, height : {}, number of bricks : {}, a : {}, threshold : {}"
                 + ", distance to space objects : {}, gender : {}, work permit : {}",
                 age, height, numberOfBricks, a, threshold, distanceToSpaceObjects, gender, workPermit);
+        LOG.error("Age : {}, height : {}", 0, 0);
     }
 }

@@ -1,0 +1,2 @@
+2025-06-14 10:56:10,022 DEBUG ru.job4j.io.UsageLog4j:main:21 - Age : 30, height : 180, number of bricks : 1000000, a : 3.5, threshold : 1.0E-4, distance to space objects : 149600000, gender : m, work permit : false
+2025-06-14 10:56:10,024 ERROR ru.job4j.io.UsageLog4j:main:24 - Age : 0, height : 0
