@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employee>
+    <id>1</id>
+    <name>Sidorov Vladimir</name>
+    <position>
+        <name>Chief</name>
+    </position>
+    <contacts>
+        <contact>
+            <phone>111-11</phone>
+        </contact>
+        <contact>
+            <phone>222-22</phone>
+        </contact>
+    </contacts>
+    <valid>true</valid>
+</employee>
