@@ -17,6 +17,26 @@ public class Nomenclature {
         this.used = used;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public String[] getColours() {
+        return colours;
+    }
+
+    public TradeMark getTradeMark() {
+        return tradeMark;
+    }
+
     @Override
     public String toString() {
         return "Nomenclature{"
