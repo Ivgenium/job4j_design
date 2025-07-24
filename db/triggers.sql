@@ -37,10 +37,8 @@ create
 or replace function tax_before()
 	returns trigger as
 $$
-	BEGIN
-		update products
-		set price = price * (1 + 0.2)
-		where id = new.id;
+	BEGIN		
+		new.price = new.price * (1 + 0.2);
 		return NEW;
 	END;
 $$
