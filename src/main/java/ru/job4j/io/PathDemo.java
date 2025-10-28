@@ -11,7 +11,7 @@ public class PathDemo {
     public static void main(String[] args) {
         Path path = FileSystems.getDefault().getPath("logs", "access.log");
         try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
-
+            reader.lines();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

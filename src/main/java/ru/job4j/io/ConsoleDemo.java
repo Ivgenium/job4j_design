@@ -3,7 +3,7 @@ package ru.job4j.io;
 import java.io.Console;
 
 public class ConsoleDemo {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String str;
         Console con;
         // получить ссылку на консоль
@@ -15,6 +15,6 @@ public class ConsoleDemo {
         }
         // прочитать строку и вывести ее
         str = con.readLine("Введите строку: ");
-        con.printf ("Введенная вами строка: %s\n", str);
+        con.printf("Введенная вами строка: %s\n", str);
     }
 }
